@@ -30,6 +30,7 @@ public class App
 
         // (pr1, pr2) -> "";
         // (pr1, pr2) -> {return null;};
+        // refactorización
         get("/", (request, response)-> "hola");
 
         get("/xml", (request, response)-> {
