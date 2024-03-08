@@ -2,6 +2,8 @@ package mx.uv;
 
 import static spark.Spark.*;
 
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+
 /**
  * Hello world!
  *
@@ -44,5 +46,51 @@ public class App
             response.type("application/xml");
             return respuesta;
         });
+
+        get("/xml2", (request, response)-> {
+            InnerApp whatsapp = new InnerApp();
+            whatsapp.setNombreApp("whatsapp");
+            whatsapp.setIdApp("1234");
+            whatsapp.setComments("aplicación de mensajería");
+
+            /*
+            String respuesta = "<nombre>" +
+                whatsapp.getNombreApp() +
+                "</nombre>";
+                */
+
+            XmlMapper xml = new XmlMapper();
+            String respuesta = xml.writeValueAsString(whatsapp);
+            response.type("application/xml");
+            return respuesta;
+        });
     }
+}
+
+/**
+ * InnerApp
+ */
+class InnerApp {
+    String nombreApp;
+    String idApp;
+    String comments;
+
+    public String getNombreApp() {
+        return nombreApp;
+    }
+    public void setNombreApp(String nombreApp) {
+        this.nombreApp = nombreApp;
+    }
+    public String getIdApp() {
+        return idApp;
+    }
+    public void setIdApp(String idApp) {
+        this.idApp = idApp;
+    }
+    public String getComments() {
+        return comments;
+    }
+    public void setComments(String comments) {
+        this.comments = comments;
+    }    
 }
