@@ -1,7 +1,7 @@
 <Envelope xmlns="http://schemas.xmlsoap.org/soap/envelope/">
     <Body>
         <Add xmlns="http://tempuri.org/">
-            <intA>12</intA>
+            <intA>13</intA>
             <intB>13</intB>
         </Add>
     </Body>
